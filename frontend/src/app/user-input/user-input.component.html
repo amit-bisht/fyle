@@ -1,0 +1,9 @@
+<form (ngSubmit)="onSubmit()" #f="ngForm">
+    <div class="mb-3">
+        <label for="userid" class="form-label">Enter Git-Hub Username</label>
+        <input type="text" class="form-control" id="userid" name="userid" ngModel>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

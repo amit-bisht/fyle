@@ -1,1 +1,2 @@
-<p>user works!</p>
+<app-loader *ngIf="isLoading"></app-loader>
+<p *ngIf="!isLoading">the content is here</p>

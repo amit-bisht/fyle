@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GithubService } from '../services/github.service';
 
@@ -8,22 +8,31 @@ import { GithubService } from '../services/github.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  constructor(private route:ActivatedRoute,private githubService:GithubService){}
-  isLoading=false
-  userGithubRepo:any
-  userInfo:any
+  constructor(private route: ActivatedRoute, private githubService: GithubService) { }
+
+  isLoading = false
+  userid: string
+  userGithubRepo: any
+  userInfo: any
+
   ngOnInit(): void {
-    this.route.params.subscribe((responseData)=>{
+    this.isLoading=true
+    this.route.params.subscribe((responseData) => {
       console.log(responseData['user-id'])
-      let userid=responseData['user-id']
-      this.githubService.fetchUserRepos(userid).subscribe(responseData=>{
-        this.userGithubRepo=responseData
-        console.log(this.userGithubRepo)
-      })
-      this.githubService.fetchUserInfo(userid).subscribe(responseData=>{
-        this.userInfo=responseData
-        console.log(this.userInfo)
-      })
+      this.userid = responseData['user-id']
+    })
+    this.loadGithubData()
+  }
+
+  loadGithubData() {
+    this.githubService.fetchUserRepos(this.userid).subscribe(responseData => {
+      this.userGithubRepo = responseData
+      console.log(this.userGithubRepo)
+      this.isLoading=false
+    })
+    this.githubService.fetchUserInfo(this.userid).subscribe(responseData => {
+      this.userInfo = responseData
+      console.log(this.userInfo)
     })
   }
 }

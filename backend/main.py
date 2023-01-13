@@ -10,16 +10,23 @@ CORS(app)
 def userInfo(userid):
     print("user info executed")
     url="https://api.github.com/users/"+userid
-    responseAPI=requests.get(url)
+    headers={
+        'Authorization':'Bearer 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'
+    }
+    responseAPI=requests.get(url,headers=headers)
     data=json.loads(responseAPI.text)
     return data
 
 @app.route("/repos/<userid>",methods=["GET"])
 def hello_world(userid):
     print("user repos executed")
-    url="https://api.github.com/users/"+userid+"/repos"
-    responseAPI=requests.get(url)
+    headers={
+        'Authorization':'Bearer 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'
+    }
+    url="https://api.github.com/users/"+userid+"/repos?per_page=4"
+    responseAPI=requests.get(url,headers=headers)
     data=json.loads(responseAPI.text)
     return data
+
 if(__name__=='__main__'):
     app.run(debug=True)

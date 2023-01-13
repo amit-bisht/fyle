@@ -13,10 +13,10 @@ export class UserComponent implements OnInit {
   isLoading = false
   userid: string
   userGithubRepo: any
-  userInfo: any
+  userInfo: any = null
 
   ngOnInit(): void {
-    this.isLoading=true
+    this.isLoading = true
     this.route.params.subscribe((responseData) => {
       console.log(responseData['user-id'])
       this.userid = responseData['user-id']
@@ -27,12 +27,13 @@ export class UserComponent implements OnInit {
   loadGithubData() {
     this.githubService.fetchUserRepos(this.userid).subscribe(responseData => {
       this.userGithubRepo = responseData
-      console.log(this.userGithubRepo)
-      this.isLoading=false
+      this.isLoading = false
+
     })
     this.githubService.fetchUserInfo(this.userid).subscribe(responseData => {
       this.userInfo = responseData
       console.log(this.userInfo)
     })
+    
   }
 }

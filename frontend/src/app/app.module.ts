@@ -12,6 +12,8 @@ import { UserComponent } from './user/user.component';
 import { ReposListComponent } from './repos-list/repos-list.component';
 import { ReposItemComponent } from './repos-list/repos-item/repos-item.component';
 import { LoaderComponent } from './loader/loader.component';
+import { UserNotFoundComponent } from './user-not-found/user-not-found.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { LoaderComponent } from './loader/loader.component';
     UserComponent,
     ReposListComponent,
     ReposItemComponent,
-    LoaderComponent
+    LoaderComponent,
+    UserNotFoundComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

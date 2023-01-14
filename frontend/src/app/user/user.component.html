@@ -1,4 +1,4 @@
-<app-loader *ngIf="isLoading"></app-loader>
+<app-loader *ngIf="isLoading && userInfo==null"></app-loader>
 <div class="container" *ngIf="!isLoading && userInfo">
     <div class="row">
         <div class="col-md-3">

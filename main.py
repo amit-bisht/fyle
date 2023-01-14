@@ -6,7 +6,6 @@ import json
 
 app = Flask(__name__,static_folder='frontend/dist',static_url_path='')
 CORS(app)
-@cross_origin()
 
 
 @app.route("/api/user/<userid>",methods=["GET"])

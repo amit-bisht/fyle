@@ -4,7 +4,7 @@ from flask_cors import CORS,cross_origin
 from flask.helpers import send_from_directory
 import json
 
-app = Flask(__name__,static_folder='frontend/dist/frontend/',static_url_path='')
+app = Flask(__name__,static_folder='frontend/dist/frontend',static_url_path='')
 CORS(app)
 
 
